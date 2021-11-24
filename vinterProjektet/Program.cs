@@ -8,6 +8,7 @@ namespace vinterProjektet
         static void Main(string[] args)
         {
             Raylib.InitWindow(1200, 800, "Mege men");
+            Player megeMan = new Player();
 
             while (!Raylib.WindowShouldClose())
         {
@@ -20,7 +21,7 @@ namespace vinterProjektet
             Rectangle floorRect = new Rectangle(0,700,1300,50);
             Raylib.DrawRectangleRec(floorRect, Color.BLACK);
 
-            Player megeMan = new Player();
+            megeMan.test();
             megeMan.Update();
 
 
