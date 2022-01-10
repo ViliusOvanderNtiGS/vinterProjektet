@@ -23,12 +23,16 @@ namespace vinterProjektet
             allGameobjects.Add(this);
         }
 
+
+
         public virtual void Update()
         {
-
+            //antal game objects
+            Raylib.DrawText(allGameobjects.Count.ToString(), 100, 50, 20, Color.ORANGE);
 
             //collisin 
-            Raylib.DrawText(allGameobjects.Count.ToString(), 100, 50, 20, Color.ORANGE);
+
+
 
 
             /*
