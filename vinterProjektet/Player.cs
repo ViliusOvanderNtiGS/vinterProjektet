@@ -4,22 +4,25 @@ using System;
 
 namespace vinterProjektet
 {
-    public class Player
+    public class Player : GameObject
     {
         public float playerX = 100;
         public float playerY = 100;
-        private float playerSpeed = 0.3f;
+        private float playerSpeed = 0.5f;
+        private float gravity = 0.5f;
+
        // public Vector2 movement= new Vector2();
 
-        public void test(){
+        public void spawnPlayer(){
 
             Rectangle playerRect = new Rectangle(playerX,playerY,50,50);
             Raylib.DrawRectangleRec(playerRect, Color.PINK);
 
         }
 
-        public void Update() {
-
+        public override void Update()
+        {
+            base.Update();
 /*
             if (Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT_SHIFT))
             {
@@ -44,6 +47,14 @@ namespace vinterProjektet
             {
                 playerY -= playerSpeed;
             }
+
+            //gravity
+
+            playerY += gravity;
+
+
+
+
 
 
             // playerX = playerSpeed;           

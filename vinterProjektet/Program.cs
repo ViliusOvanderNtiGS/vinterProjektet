@@ -9,21 +9,25 @@ namespace vinterProjektet
         {
             Raylib.InitWindow(1200, 800, "Mege men");
             Player megeMan = new Player();
+            Ground floor = new Ground();
+
+
 
             while (!Raylib.WindowShouldClose())
-        {
-            Raylib.BeginDrawing();
+             {
+                Raylib.BeginDrawing();
 
       
-            Raylib.ClearBackground(Color.WHITE);
-      
-            //golvet
-            Rectangle floorRect = new Rectangle(0,700,1300,50);
-            Raylib.DrawRectangleRec(floorRect, Color.BLACK);
+                Raylib.ClearBackground(Color.WHITE);
+                
+            
+                floor.setGround();
+                megeMan.spawnPlayer();
 
-            megeMan.test();
-            megeMan.Update();
-
+                    foreach (GameObject gamer in GameObject.allGameobjects)
+                    {
+                        gamer.Update();
+                    }
 
       
             Raylib.EndDrawing();
