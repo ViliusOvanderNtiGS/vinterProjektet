@@ -8,12 +8,13 @@ namespace vinterProjektet
     {
         public float playerX = 100;
         public float playerY = 100;
-        private float playerSpeed = 0.5f;
-        private float gravity = 0.5f;
+        private float playerSpeed = 1f;
+
 
         // public Vector2 movement= new Vector2();
 
-        public void spawnPlayer()
+
+        public override void Draw()
         {
             rect = new Rectangle(playerX, playerY, 50, 50);
             Raylib.DrawRectangleRec(rect, Color.PINK);
@@ -42,19 +43,16 @@ namespace vinterProjektet
             {
                 playerY += playerSpeed;
             }
-            if (Raylib.IsKeyDown(KeyboardKey.KEY_UP))
-            {
-                playerY -= playerSpeed;
-            }
 
             //gravity
 
-            playerY += gravity;
+            velocityY += gravity;
+
 
             // overlaping with ground
 
-
-            foreach (GameObject obj in allGameobjects)
+            bool isGrounded = false;
+            foreach (GameObject obj in allGameObjects)
             {
                 if (obj is Ground)
                 {
@@ -63,10 +61,27 @@ namespace vinterProjektet
 
                     if (areOverlapping == true)
                     {
-                        gravity = 0;
+                        // gravity = 0;
+                        velocityY = 0;
+                        isGrounded = true;
+                    }
+                    else
+                    {
+                        // gravity = 0.5f;
                     }
                 }
             }
+
+            if (Raylib.IsKeyPressed(KeyboardKey.KEY_UP) && isGrounded)
+            {
+                // playerY -= playerSpeed * 2;
+                velocityY = -6;
+            }
+
+
+
+
+            playerY += velocityY;
 
 
 

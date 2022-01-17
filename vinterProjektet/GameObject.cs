@@ -7,20 +7,21 @@ namespace vinterProjektet
 {
     public class GameObject
     {
-        private float gravity = 0.5f;
+        protected float gravity = 0.05f;
+
+        protected float velocityY = 0;
 
         public Rectangle rect;
 
-        public Vector2 velocity;
+        // public Vector2 velocity;
 
 
 
-        public static List<GameObject> allGameobjects = new List<GameObject>();
+        public static List<GameObject> allGameObjects = new List<GameObject>();
 
         public GameObject()
         {
-
-            allGameobjects.Add(this);
+            allGameObjects.Add(this);
         }
 
 
@@ -28,7 +29,7 @@ namespace vinterProjektet
         public virtual void Update()
         {
             //antal game objects
-            Raylib.DrawText(allGameobjects.Count.ToString(), 100, 50, 20, Color.ORANGE);
+            Raylib.DrawText(allGameObjects.Count.ToString(), 100, 50, 20, Color.ORANGE);
 
             //collisin 
 
@@ -44,9 +45,9 @@ namespace vinterProjektet
 
         }
 
-        public void Draw()
+        public virtual void Draw()
         {
-            Raylib.DrawRectangleRec(rect, Color.BLUE);
+            Raylib.DrawRectangleRec(rect, Color.BLACK);
         }
 
 

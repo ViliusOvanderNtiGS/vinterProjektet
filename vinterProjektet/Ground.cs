@@ -8,8 +8,13 @@ namespace vinterProjektet
 
         public void setGround()
         {
-            rect = new Rectangle(0, 700, 1300, 50);
+
+
             Raylib.DrawRectangleRec(rect, Color.BLACK);
+
+            // rect = new Rectangle(600, 500, 1300, 50);
+            // Raylib.DrawRectangleRec(rect, Color.ORANGE);
+
         }
 
     }
