@@ -1,80 +1,54 @@
+using System;
 using Raylib_cs;
 using System.Numerics;
-using System;
 
 namespace vinterProjektet
 {
-    public class Player : GameObject
+    public class Enemy : GameObject
     {
-        private float playerX = 100;
-        private float playerY = 100;
-        private float playerSpeed = 1.3f;
-
-        // public int Hp { get; set; }
+        private float enemyY = 100;
+        private float enemyX = 900;
+        private float enemySpeed = 0.4f;
 
         //hp
-
-        private int hp = 100;
-
-        public int Hp
-        {
-            get
-            {
-                return hp;
-            }
-            set
-            {
-                hp = Math.Clamp(value, 0, 100);
-            }
-        }
-
-
-        // public Vector2 movement= new Vector2();
+        // private int hp = 100;
 
         //Draw
         public override void Draw()
         {
-            rect = new Rectangle(playerX, playerY, 50, 50);
-            Raylib.DrawRectangleRec(rect, Color.PINK);
+            rect = new Rectangle(enemyX, enemyY, 50, 50);
+            Raylib.DrawRectangleRec(rect, Color.RED);
         }
 
         //Update
         public override void Update()
         {
             base.Update();
-            /*
-                        if (Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT_SHIFT))
-                        {
-                            playerSpeed = 1f;
-                        }
-            */
 
+            /*
             //movement
             if (Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT))
             {
-                playerX += playerSpeed;
+                enemyX += enemySpeed;
             }
             if (Raylib.IsKeyDown(KeyboardKey.KEY_LEFT))
             {
-                playerX -= playerSpeed;
+                enemyX -= enemySpeed;
             }
             if (Raylib.IsKeyDown(KeyboardKey.KEY_DOWN))
             {
-                playerY += playerSpeed;
+                enemyY += enemySpeed;
             }
+            */
+            enemyX -= enemySpeed;
 
             //gravity
 
             velocityY += gravity;
 
-            //galen info
-            Raylib.DrawText(velocityY.ToString(), 120, 50, 20, Color.BLUE);
-
-            Raylib.DrawText(Hp.ToString(), 50, 50, 20, Color.RED);
 
             // overlaping with ground
-
-            bool isGrounded = false;
+            //bool isGrounded = false;
             foreach (GameObject obj in allGameObjects)
             {
                 if (obj is Ground)
@@ -86,7 +60,7 @@ namespace vinterProjektet
                     {
                         // gravity = 0;
                         velocityY = 0;
-                        isGrounded = true;
+                        // isGrounded = true;
                     }
                     else
                     {
@@ -94,27 +68,18 @@ namespace vinterProjektet
                     }
                 }
             }
-
+            /*
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_UP) && isGrounded)
             {
-                // playerY -= playerSpeed * 2;
+                // enemyY -= enemySpeed * 2;
                 velocityY = -6;
             }
+            */
 
+            enemyY += velocityY;
 
-
-
-            playerY += velocityY;
-
-
-
-
-
-            // playerX = playerSpeed;           
 
 
         }
     }
-
-
 }

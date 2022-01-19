@@ -9,6 +9,12 @@ namespace vinterProjektet
         {
             Raylib.InitWindow(1200, 800, "Mege men");
             Player megeMan = new Player();
+            Enemy goober = new Enemy();
+
+
+            megeMan.Hp = 900;
+
+            //floor generation
 
             Ground floor = new Ground();
             floor.rect = new Rectangle(0, 700, 1300, 50);

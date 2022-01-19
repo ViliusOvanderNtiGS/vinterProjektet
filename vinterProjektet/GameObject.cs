@@ -17,6 +17,8 @@ namespace vinterProjektet
 
 
 
+
+
         public static List<GameObject> allGameObjects = new List<GameObject>();
 
         public GameObject()
