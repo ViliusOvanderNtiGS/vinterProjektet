@@ -33,11 +33,6 @@ namespace vinterProjektet
 
                 Raylib.ClearBackground(Color.WHITE);
 
-
-                // floor.Draw();
-
-                // megeMan.Draw();
-
                 foreach (GameObject gamer in GameObject.allGameObjects)
                 {
                     gamer.Update();

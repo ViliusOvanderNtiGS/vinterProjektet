@@ -10,10 +10,6 @@ namespace vinterProjektet
         private float playerY = 100;
         private float playerSpeed = 1.3f;
 
-        // public int Hp { get; set; }
-
-        //hp
-
         private int hp = 100;
 
         public int Hp
@@ -28,9 +24,6 @@ namespace vinterProjektet
             }
         }
 
-
-        // public Vector2 movement= new Vector2();
-
         //Draw
         public override void Draw()
         {
@@ -42,12 +35,7 @@ namespace vinterProjektet
         public override void Update()
         {
             base.Update();
-            /*
-                        if (Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT_SHIFT))
-                        {
-                            playerSpeed = 1f;
-                        }
-            */
+
 
             //movement
             if (Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT))
@@ -88,16 +76,12 @@ namespace vinterProjektet
                         velocityY = 0;
                         isGrounded = true;
                     }
-                    else
-                    {
-                        // gravity = 0.5f;
-                    }
                 }
             }
 
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_UP) && isGrounded)
             {
-                // playerY -= playerSpeed * 2;
+
                 velocityY = -6;
             }
 
@@ -105,12 +89,6 @@ namespace vinterProjektet
 
 
             playerY += velocityY;
-
-
-
-
-
-            // playerX = playerSpeed;           
 
 
         }

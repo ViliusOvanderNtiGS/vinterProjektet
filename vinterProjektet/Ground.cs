@@ -5,15 +5,12 @@ namespace vinterProjektet
 {
     public class Ground : GameObject
     {
-
+        //den här klassen är lite onödig kanske tycker jag
+        //det är bara en sak
         public void setGround()
         {
 
-
             Raylib.DrawRectangleRec(rect, Color.BLACK);
-
-            // rect = new Rectangle(600, 500, 1300, 50);
-            // Raylib.DrawRectangleRec(rect, Color.ORANGE);
 
         }
 

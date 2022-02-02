@@ -17,7 +17,8 @@ namespace vinterProjektet
 
 
 
-
+        //Detta gör så att jag enkelt kan rita ut allt utan att behöva skriva någpt extra
+        //Allt som ärvs av GameObject hammnar i listan automatiskt och sen ritas ut
 
         public static List<GameObject> allGameObjects = new List<GameObject>();
 
@@ -27,23 +28,11 @@ namespace vinterProjektet
         }
 
 
-
+        //Detta är det som uppdaterar allt automatiskt åt mig
         public virtual void Update()
         {
             //antal game objects
             Raylib.DrawText(allGameObjects.Count.ToString(), 100, 50, 20, Color.ORANGE);
-
-            //collisin 
-
-
-
-
-            /*
-            //gravity
-            rect.x += velocity.X;
-            rect.y += velocity.Y;
-            */
-
 
         }
 
