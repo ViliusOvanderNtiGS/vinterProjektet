@@ -8,6 +8,7 @@ namespace vinterProjektet
         static void Main(string[] args)
         {
             Raylib.InitWindow(1200, 800, "Mege men");
+            //Raylib.SetTargetFPS(500);
             Player megeMan = new Player();
             Enemy goober = new Enemy();
 
