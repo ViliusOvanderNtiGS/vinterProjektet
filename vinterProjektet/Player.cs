@@ -13,8 +13,8 @@ namespace vinterProjektet
 
         int timer = 0;
 
+        // Hp sakerna
         private int hp = 100;
-
         public int Hp
         {
             get
@@ -65,7 +65,7 @@ namespace vinterProjektet
             Raylib.DrawText(Hp.ToString(), 50, 50, 20, Color.RED);
 
             // overlaping with ground
-
+            // detta gör så att man inte åker in genom marken
             bool isGrounded = false;
             foreach (GameObject obj in allGameObjects)
             {
@@ -83,11 +83,12 @@ namespace vinterProjektet
                 }
             }
 
+            // enemy saker
             if (timer > 0)
             {
                 timer--;
             }
-
+            // detta tar bort hp när man collidar och det tar inte allt hp skit snabbt
             bool hitByEnemy = false;
             foreach (GameObject enemy in allGameObjects)
             {
@@ -108,13 +109,11 @@ namespace vinterProjektet
                 }
             }
 
+            // hopp
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_UP) && isGrounded)
             {
                 velocityY = -6;
             }
-
-
-
 
             playerY += velocityY;
 

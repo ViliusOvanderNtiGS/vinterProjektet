@@ -30,6 +30,8 @@ namespace vinterProjektet
 
 
             //overlaping with ground
+            // samma som i player
+            // den gör så skiten inte rammlar
             foreach (GameObject obj in allGameObjects)
             {
                 if (obj is Ground)

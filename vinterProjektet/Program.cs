@@ -8,7 +8,7 @@ namespace vinterProjektet
         static void Main(string[] args)
         {
             Raylib.InitWindow(1200, 800, "Mege men");
-            //Raylib.SetTargetFPS(500);
+            //Raylib.SetTargetFPS(500); Detta ville tydligen inte fixa att spelet blir snabbt efter en stund
             Player megeMan = new Player();
             Enemy goober = new Enemy();
 
