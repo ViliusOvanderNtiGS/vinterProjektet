@@ -33,6 +33,7 @@ namespace vinterProjektet
         {
             //antal game objects
             Raylib.DrawText(allGameObjects.Count.ToString(), 100, 50, 20, Color.ORANGE);
+            //Raylib.GetFrameTime();
 
         }
 
