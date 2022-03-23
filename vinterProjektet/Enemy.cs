@@ -6,9 +6,25 @@ namespace vinterProjektet
 {
     public class Enemy : GameObject
     {
-        private float enemyY = 100;
-        private float enemyX = 900;
-        private float enemySpeed = 0.4f;
+
+
+        protected float startX, startY;
+
+        public float enemyX = 900;
+        public float enemyY = 100;
+        protected float enemySpeed = 0.4f;
+
+        public void SetStartPosition(float x, float y)
+        {
+            enemyX = startX = x;
+            enemyY = startY = y;
+        }
+
+        public override void Reset()
+        {
+            enemyX = startX;
+            enemyY = startY;
+        }
 
         //Draw
         public override void Draw()

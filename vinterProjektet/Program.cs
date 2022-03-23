@@ -1,5 +1,6 @@
 ﻿using System;
 using Raylib_cs;
+using System.Numerics;
 
 namespace vinterProjektet
 {
@@ -11,76 +12,131 @@ namespace vinterProjektet
             //Raylib.SetTargetFPS(500); Detta ville tydligen inte fixa att spelet blir snabbt efter en stund 
             Player megeMan = new Player();
             Enemy goober = new Enemy();
+            EnemyBig bloober = new EnemyBig();
 
-
+            // kan sätta hå till vad man vill den kommer ändå vara max 100
             megeMan.Hp = 900;
 
             //floor generation
 
             Ground floor = new Ground();
-            floor.rect = new Rectangle(0, 700, 1300, 50);
+            floor.rect = new Rectangle(0, 700, 1300, 25);
 
             Ground floor2 = new Ground();
-            floor2.rect = new Rectangle(600, 500, 1300, 50);
+            floor2.rect = new Rectangle(600, 500, 1300, 25);
 
+            Raylib.SetTargetFPS(120);
 
-
+            int currentRoom = 0;
 
 
             while (!Raylib.WindowShouldClose())
             {
                 Raylib.BeginDrawing();
 
+                if (Raylib.IsKeyDown(KeyboardKey.KEY_ESCAPE))
+                {
+                    Raylib.CloseWindow();
+                }
 
 
                 //Game State
-                bool gameContinues = true;
 
-                int currentRoom = 0;
 
-                while (gameContinues == true)
+
+                if (currentRoom == 0) //intro screen
                 {
-                    if (currentRoom == 0) //intro screen
+                    Raylib.ClearBackground(Color.WHITE);
+                    Raylib.DrawText("test", 50, 50, 20, Color.ORANGE);
+                    Texture2D intro = Raylib.LoadTexture("instruktioner.png");
+                    Raylib.DrawTextureEx(intro, new Vector2(0, 100), 0, 0.5f, Color.WHITE);
+
+
+                    if (Raylib.IsKeyDown(KeyboardKey.KEY_ENTER))
                     {
-                        Raylib.DrawText("test", 50, 50, 20, Color.ORANGE);
+                        currentRoom = 1;
+                    }
+                }
 
-                        Raylib.ClearBackground(Color.WHITE);
-                        Raylib.EndDrawing();
+                if (currentRoom == 1) // game screen
+                {
+                    Raylib.ClearBackground(Color.WHITE);
 
-                        if (Raylib.IsKeyDown(KeyboardKey.KEY_ENTER))
-                        {
-                            currentRoom = 1;
-                        }
+                    foreach (GameObject gamer in GameObject.allGameObjects)
+                    {
+                        gamer.Update();
+                        gamer.Draw();
                     }
 
-                    if (currentRoom == 1) // game screen
+                    if (megeMan.Hp <= 0)
                     {
-                        Raylib.SetTargetFPS(120);
-                        Raylib.ClearBackground(Color.WHITE);
-
-                        foreach (GameObject gamer in GameObject.allGameObjects)
-                        {
-                            gamer.Update();
-                            gamer.Draw();
-                        }
-
-                        Raylib.ClearBackground(Color.WHITE);
-                        Raylib.EndDrawing();
+                        currentRoom = 2;
                     }
 
-                    else if (currentRoom == 2) //death screen
+                    if (megeMan.playerY >= 1000)
                     {
-                        // kod för death screen
+                        currentRoom = 3;
+                    }
+
+                }
+
+                if (currentRoom == 2) //death screen
+                {
+                    Raylib.ClearBackground(Color.WHITE);
+
+                    Texture2D death = Raylib.LoadTexture("Aironas.png");
+                    Raylib.DrawTextureEx(death, new Vector2(0, 100), 0, 1f, Color.WHITE);
+
+                    //Reset
+                    megeMan.Hp = 100;
+                    megeMan.playerX = 100;
+                    megeMan.playerY = 100;
+                    goober.enemyX = 900;
+                    goober.enemyY = 100;
+                    bloober.enemyX = 1000;
+                    bloober.enemyY = 100;
+
+                    // press enter to try again
+                    if (Raylib.IsKeyDown(KeyboardKey.KEY_ENTER))
+                    {
+                        currentRoom = 1;
+                    }
+                }
+
+                if (currentRoom == 3) //The cube has fallen
+                {
+                    Raylib.ClearBackground(Color.WHITE);
+
+                    Raylib.DrawText("the cube has fallen..", 300, 300, 50, Color.DARKPURPLE);
+                    Raylib.DrawText("tryck enter", 300, 400, 50, Color.DARKGREEN);
+                    //Texture2D death = Raylib.LoadTexture("Aironas.png");
+                    //Raylib.DrawTextureEx(death, new Vector2(0, 100), 0, 1f, Color.WHITE);
+
+                    //Reset
+                    megeMan.Hp = 100;
+                    megeMan.playerX = 100;
+                    megeMan.playerY = 100;
+                    goober.enemyX = 900;
+                    goober.enemyY = 100;
+                    bloober.enemyX = 1000;
+                    bloober.enemyY = 100;
+
+                    // press enter to try again
+                    if (Raylib.IsKeyDown(KeyboardKey.KEY_ENTER))
+                    {
+                        currentRoom = 1;
                     }
                 }
 
 
 
+                Raylib.EndDrawing();
 
 
             }
 
 
         }
+
     }
 }

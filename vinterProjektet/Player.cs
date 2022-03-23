@@ -6,8 +6,8 @@ namespace vinterProjektet
 {
     public class Player : GameObject
     {
-        private float playerX = 100;
-        private float playerY = 100;
+        public float playerX = 100;
+        public float playerY = 100;
         private float playerSpeed = 1.3f;
         int newHp;
 

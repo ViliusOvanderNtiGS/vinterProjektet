@@ -27,13 +27,17 @@ namespace vinterProjektet
             allGameObjects.Add(this);
         }
 
+        public virtual void Reset()
+        {
+
+        }
 
         //Detta är det som uppdaterar allt automatiskt åt mig
         public virtual void Update()
         {
             //antal game objects
             Raylib.DrawText(allGameObjects.Count.ToString(), 100, 50, 20, Color.ORANGE);
-            //Raylib.GetFrameTime();
+            Raylib.GetFrameTime();
 
         }
 
