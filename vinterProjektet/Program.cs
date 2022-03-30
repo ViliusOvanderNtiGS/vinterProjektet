@@ -13,6 +13,7 @@ namespace vinterProjektet
             Player megeMan = new Player();
             Enemy goober = new Enemy();
             EnemyBig bloober = new EnemyBig();
+            EnemyFloor floober = new EnemyFloor();
 
             // kan sätta hå till vad man vill den kommer ändå vara max 100
             megeMan.Hp = 900;
@@ -88,14 +89,7 @@ namespace vinterProjektet
                     Raylib.DrawTextureEx(death, new Vector2(0, 100), 0, 1f, Color.WHITE);
 
                     //Reset
-                    megeMan.Hp = 100;
-                    megeMan.playerX = 100;
-                    megeMan.playerY = 100;
-                    goober.enemyX = 900;
-                    goober.enemyY = 100;
-                    bloober.enemyX = 1000;
-                    bloober.enemyY = 100;
-
+                    Reset(currentRoom, megeMan, goober, bloober);
                     // press enter to try again
                     if (Raylib.IsKeyDown(KeyboardKey.KEY_ENTER))
                     {
@@ -113,14 +107,7 @@ namespace vinterProjektet
                     //Raylib.DrawTextureEx(death, new Vector2(0, 100), 0, 1f, Color.WHITE);
 
                     //Reset
-                    megeMan.Hp = 100;
-                    megeMan.playerX = 100;
-                    megeMan.playerY = 100;
-                    goober.enemyX = 900;
-                    goober.enemyY = 100;
-                    bloober.enemyX = 1000;
-                    bloober.enemyY = 100;
-
+                    Reset(currentRoom, megeMan, goober, bloober);
                     // press enter to try again
                     if (Raylib.IsKeyDown(KeyboardKey.KEY_ENTER))
                     {
@@ -134,6 +121,19 @@ namespace vinterProjektet
 
 
             }
+
+
+        }
+        static void Reset(int currentRoom, Player megeMan, Enemy goober, EnemyBig bloober)
+        {
+            //Reset
+            megeMan.Hp = 100;
+            megeMan.playerX = 100;
+            megeMan.playerY = 100;
+            goober.enemyX = 900;
+            goober.enemyY = 100;
+            bloober.enemyX = 1000;
+            bloober.enemyY = 100;
 
 
         }

@@ -11,6 +11,8 @@ namespace vinterProjektet
         private float playerSpeed = 1.3f;
         int newHp;
 
+
+
         int timer = 0;
 
         // Hp sakerna
