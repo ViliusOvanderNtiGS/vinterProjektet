@@ -79,6 +79,11 @@ namespace vinterProjektet
                         currentRoom = 3;
                     }
 
+                    int mouseX = Raylib.GetMouseX();
+                    Raylib.DrawText("X " + mouseX.ToString(), 150, 100, 20, Color.PINK);
+                    int mouseY = Raylib.GetMouseY();
+                    Raylib.DrawText("Y " + mouseY.ToString(), 150, 130, 20, Color.PINK);
+
                 }
 
                 if (currentRoom == 2) //death screen

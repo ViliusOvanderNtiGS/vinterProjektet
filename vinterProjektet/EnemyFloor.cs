@@ -7,15 +7,15 @@ namespace vinterProjektet
     {
         public EnemyFloor()
         {
-            enemyX = 1000;
-            enemyY = 100;
+            enemyX = 700;
+            enemyY = 680;
             enemySpeed = 0.0f;
         }
 
         //Draw
         public override void Draw()
         {
-            rect = new Rectangle(enemyX, enemyY, 40, 200);
+            rect = new Rectangle(enemyX, enemyY, 300, 40);
             Raylib.DrawRectangleRec(rect, Color.RED);
         }
     }
