@@ -79,6 +79,7 @@ namespace vinterProjektet
                         currentRoom = 3;
                     }
 
+                    //detta för att se vart jag ska lägga saker i leveln
                     int mouseX = Raylib.GetMouseX();
                     Raylib.DrawText("X " + mouseX.ToString(), 150, 100, 20, Color.PINK);
                     int mouseY = Raylib.GetMouseY();

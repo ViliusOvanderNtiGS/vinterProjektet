@@ -11,6 +11,7 @@ namespace vinterProjektet
         private float playerSpeed = 1.3f;
         int newHp;
 
+        Weapon sword = new Weapon();
 
 
         int timer = 0;
