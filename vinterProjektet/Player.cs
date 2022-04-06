@@ -93,6 +93,7 @@ namespace vinterProjektet
             }
             // detta tar bort hp när man collidar och det tar inte allt hp skit snabbt
             bool hitByEnemy = false;
+
             foreach (GameObject enemy in allGameObjects)
             {
                 if (enemy is Enemy)
@@ -102,7 +103,7 @@ namespace vinterProjektet
 
                     if (hitByEnemy == true && timer == 0)
                     {
-                        newHp = hp - 33;
+                        newHp = hp - ((Enemy)enemy).damage;
                         hp = newHp;
 
                         hitByEnemy = true;
@@ -111,6 +112,25 @@ namespace vinterProjektet
                     }
                 }
             }
+            bool hitByEnemyFloor = false;
+            foreach (GameObject enemyFloor in allGameObjects)
+            {
+                if (enemyFloor is EnemyFloor)
+                {
+                    hitByEnemyFloor = Raylib.CheckCollisionRecs(rect, enemyFloor.rect); // true
+
+                    if (hitByEnemyFloor == true && timer == 0)
+                    {
+                        newHp = hp - ((EnemyFloor)enemyFloor).damage; ;
+                        hp = newHp;
+
+                        hitByEnemyFloor = true;
+                        timer = 80;
+
+                    }
+                }
+            }
+
 
             // hopp
             if (Raylib.IsKeyPressed(KeyboardKey.KEY_UP) && isGrounded)

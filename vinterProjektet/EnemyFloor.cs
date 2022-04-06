@@ -10,6 +10,7 @@ namespace vinterProjektet
             enemyX = 700;
             enemyY = 680;
             enemySpeed = 0.0f;
+            damage = 66;
         }
 
         //Draw

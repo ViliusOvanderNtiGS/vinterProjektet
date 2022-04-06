@@ -14,6 +14,8 @@ namespace vinterProjektet
         public float enemyY = 100;
         protected float enemySpeed = 0.4f;
 
+        public int damage = 33;
+
         public void SetStartPosition(float x, float y)
         {
             enemyX = startX = x;
