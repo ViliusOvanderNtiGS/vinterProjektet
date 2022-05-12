@@ -55,7 +55,7 @@ namespace vinterProjektet
                 if (obj is Ground)
                 {
                     bool areOverlapping = Raylib.CheckCollisionRecs(rect, obj.rect); // true
-                    Console.WriteLine(areOverlapping);
+
 
                     if (areOverlapping == true)
                     {

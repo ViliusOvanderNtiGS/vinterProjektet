@@ -38,6 +38,8 @@ namespace vinterProjektet
             Raylib.DrawRectangleRec(rect, Color.PINK);
         }
 
+        public string playerFacing = "";
+
         //Update
         public override void Update()
         {
@@ -48,10 +50,12 @@ namespace vinterProjektet
             if (Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT))
             {
                 playerX += playerSpeed;
+                playerFacing = "right";
             }
             if (Raylib.IsKeyDown(KeyboardKey.KEY_LEFT))
             {
                 playerX -= playerSpeed;
+                playerFacing = "left";
             }
             if (Raylib.IsKeyDown(KeyboardKey.KEY_DOWN))
             {
@@ -75,7 +79,6 @@ namespace vinterProjektet
                 if (obj is Ground)
                 {
                     bool areOverlapping = Raylib.CheckCollisionRecs(rect, obj.rect); // true
-                    Console.WriteLine(areOverlapping);
 
                     if (areOverlapping == true)
                     {
@@ -84,6 +87,12 @@ namespace vinterProjektet
                         isGrounded = true;
                     }
                 }
+            }
+
+            //Weapon saker
+            if (Raylib.IsKeyDown(KeyboardKey.KEY_RIGHT_SHIFT))
+            {
+                sword.DealDamage(this);
             }
 
             // enemy saker
@@ -99,7 +108,7 @@ namespace vinterProjektet
                 if (enemy is Enemy)
                 {
                     hitByEnemy = Raylib.CheckCollisionRecs(rect, enemy.rect); // true
-                    Console.WriteLine(hitByEnemy);
+
 
                     if (hitByEnemy == true && timer == 0)
                     {

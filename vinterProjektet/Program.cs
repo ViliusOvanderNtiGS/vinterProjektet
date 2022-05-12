@@ -10,6 +10,8 @@ namespace vinterProjektet
         {
             Raylib.InitWindow(1200, 800, "Mege men");
             //Raylib.SetTargetFPS(500); Detta ville tydligen inte fixa att spelet blir snabbt efter en stund 
+            Texture2D death = Raylib.LoadTexture("Aironas.png");
+            Texture2D intro = Raylib.LoadTexture("instruktioner.png");
             Player megeMan = new Player();
             Enemy goober = new Enemy();
             EnemyBig bloober = new EnemyBig();
@@ -41,6 +43,8 @@ namespace vinterProjektet
                 }
 
 
+
+
                 //Game State
 
 
@@ -49,7 +53,7 @@ namespace vinterProjektet
                 {
                     Raylib.ClearBackground(Color.WHITE);
                     Raylib.DrawText("test", 50, 50, 20, Color.ORANGE);
-                    Texture2D intro = Raylib.LoadTexture("instruktioner.png");
+
                     Raylib.DrawTextureEx(intro, new Vector2(0, 100), 0, 0.5f, Color.WHITE);
 
 
@@ -79,6 +83,8 @@ namespace vinterProjektet
                         currentRoom = 3;
                     }
 
+
+
                     //detta för att se vart jag ska lägga saker i leveln
                     int mouseX = Raylib.GetMouseX();
                     Raylib.DrawText("X " + mouseX.ToString(), 150, 100, 20, Color.PINK);
@@ -91,7 +97,6 @@ namespace vinterProjektet
                 {
                     Raylib.ClearBackground(Color.WHITE);
 
-                    Texture2D death = Raylib.LoadTexture("Aironas.png");
                     Raylib.DrawTextureEx(death, new Vector2(0, 100), 0, 1f, Color.WHITE);
 
                     //Reset
